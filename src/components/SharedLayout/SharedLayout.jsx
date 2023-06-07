@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../Header/Header';
+import Header from 'components/Header/Header';
 import Footer from '../Footer/Footer';
 import { Container } from 'components/App.styled';
 import { Suspense } from 'react';

@@ -6,7 +6,7 @@ import {
   Img,
   StyledNavLink,
   Nav,
-} from './Header/Header.styled';
+} from './Header.styled';
 import ImgLogo from '../../images/logo.png';
 
 const Header = () => {

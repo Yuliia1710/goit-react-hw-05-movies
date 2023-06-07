@@ -1,12 +1,19 @@
 import noPosterPhoto from '../../images/no-photo-available.png';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { useRef } from 'react';
+import {
+  MovieCardContainer,
+  ImageContainer,
+  Img,
+  StyledGoBack,
+  StyledGoBackContainer,
+  StyledNavLink,
+} from './MovieCard.styled';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const MovieCard = ({ movieInfo }) => {
-  console.log('movieInfo', movieInfo);
   const location = useLocation();
 
   const backLinkHref = useRef(location.state?.from ?? '/');
@@ -27,34 +34,38 @@ const MovieCard = ({ movieInfo }) => {
   }
 
   return (
-    <div>
-      <div>
-        <NavLink to={backLinkHref.current}>Go Back</NavLink>
-      </div>
-      <div>
-        <div>
-          <img srcSet={poster} alt={nameOfMovie} />
-        </div>
+    <>
+      <StyledGoBackContainer>
+        <StyledGoBack to={backLinkHref.current}>Go Back</StyledGoBack>
+      </StyledGoBackContainer>
+      <MovieCardContainer>
+        <ImageContainer>
+          <Img srcSet={poster} alt={nameOfMovie} />
+        </ImageContainer>
         <div>
           <h1>{nameOfMovie}</h1>
-          <p>User Score:{userScore}</p>
+          <p>User Score: {userScore} </p>
           <h2>Overview</h2>
           <p>{movieInfo.overview}</p>
           <h2>Genres</h2>
           <p>{genres}</p>
         </div>
-      </div>
+      </MovieCardContainer>
+      <h2>Additional Information</h2>
       <div>
-        <h2>Additional Information</h2>
-        <NavLink to={`/movies/${movieInfo.id}/cast`}>Casts</NavLink>
-        <NavLink to={`/movies/${movieInfo.id}/reviews`}>Reviews</NavLink>
+        <StyledNavLink to={`/movies/${movieInfo.id}/cast`}>Casts</StyledNavLink>
+        <StyledNavLink to={`/movies/${movieInfo.id}/reviews`}>
+          Reviews
+        </StyledNavLink>
       </div>
 
       <Outlet />
-    </div>
+    </>
   );
 };
 
 export default MovieCard;
 
-// MovieCard.propTypes = {};
+MovieCard.propTypes = {
+  movieInfo: PropTypes.object.isRequired,
+};

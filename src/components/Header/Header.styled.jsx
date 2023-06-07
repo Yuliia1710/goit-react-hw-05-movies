@@ -10,17 +10,25 @@ export const HeaderStyled = styled.header`
 
 export const StyledContainer = styled(Container)`
   display: flex;
+  flex-direction: row;
 `;
 
 export const Img = styled.img`
   width: 200px;
 `;
 
+export const Nav = styled.nav`
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+`;
+
 export const StyledNavLink = styled(NavLink)`
   color: white;
   text-decoration: none;
   margin-left: 30px;
-  font-size: 25px;
+  font-size: 30px;
+  display: flex;
 
   &:hover {
     text-decoration: underline;
@@ -30,8 +38,4 @@ export const StyledNavLink = styled(NavLink)`
     color: orange;
     font-weight: bold;
   }
-`;
-
-export const Nav = styled.nav`
-  display: flex;
 `;

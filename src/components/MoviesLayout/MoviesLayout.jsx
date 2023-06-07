@@ -1,7 +1,14 @@
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import { UL, Li, ImageThumb, Img } from './MoviesLayout.styled';
+import { Link, useLocation } from 'react-router-dom';
+import {
+  UL,
+  Li,
+  ImageThumb,
+  Img,
+  StyledNavLink,
+  TextBlock,
+} from './MoviesLayout.styled';
 import noPosterPhoto from '../../images/no-photo-available.png';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 const MoviesLayout = ({ arrayOfMovies }) => {
   const location = useLocation();
@@ -29,11 +36,14 @@ const MoviesLayout = ({ arrayOfMovies }) => {
                 <Img srcSet={poster} alt="" />
               </ImageThumb>
             </Link>
-            <div>
-              <NavLink to={`/movies/${movie.id}`} state={{ from: location }}>
+            <TextBlock>
+              <StyledNavLink
+                to={`/movies/${movie.id}`}
+                state={{ from: location }}
+              >
                 {nameOfMovie}
-              </NavLink>
-            </div>
+              </StyledNavLink>
+            </TextBlock>
           </Li>
         );
       })}
@@ -43,4 +53,6 @@ const MoviesLayout = ({ arrayOfMovies }) => {
 
 export default MoviesLayout;
 
-// MoviesLayout.propTypes = {};
+MoviesLayout.propTypes = {
+  arrayOfMovies: PropTypes.array.isRequired,
+};

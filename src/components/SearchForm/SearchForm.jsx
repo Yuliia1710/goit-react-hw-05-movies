@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Button, Input } from './SearchForm.styled';
+import PropTypes from 'prop-types';
 
 const SearchForm = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
@@ -28,11 +30,11 @@ const SearchForm = ({ onSubmit }) => {
     <>
       <ToastContainer autoClose={1000} />
       <form className="form" onSubmit={onHandleSubmit}>
-        <button type="submit" className="button">
+        <Button type="submit" className="button">
           <span className="button-label">Search</span>
-        </button>
+        </Button>
 
-        <input
+        <Input
           className="input"
           type="text"
           autoComplete="off"
@@ -48,4 +50,6 @@ const SearchForm = ({ onSubmit }) => {
 
 export default SearchForm;
 
-// SearchForm.propTypes = {};
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
